@@ -4,7 +4,10 @@ version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.14"
-dependencies = []
+dependencies = [
+    "torch>=2.15.0",
+    "torchvision>=0.29.2",
+]
 
 [project.scripts]
 test-pytorch = "test_pytorch:main"
@@ -18,8 +21,16 @@ dev = [
     "ruff>=0.17.5",
 ]
 
+[[tool.uv.index]]
+name = "pytorch"
+url = "https://download.pytorch.org/whl/cpu"
+
 [tool.ruff]
 target-version = "py314"
 
 [tool.ruff.lint]
 select = ["E", "F"]
+
+[tool.uv.sources]
+torch = { index = "pytorch" }
+torchvision = { index = "pytorch" }
